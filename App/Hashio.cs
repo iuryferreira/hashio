@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Security.Cryptography;
 using Hash.Interfaces;
-using App.Models;
+using Hash.Models;
 
 namespace Hash
 {

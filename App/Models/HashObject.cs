@@ -1,6 +1,6 @@
 using System;
 
-namespace App.Models
+namespace Hash.Models
 {
     ///<summary>
     /// This class creates a hash object that is used when checking the hash.
