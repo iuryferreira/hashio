@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Authentication" title="Authentication" src=".github/images/hasher.png" width="400px" />
+  <img alt="Authentication" title="Authentication" src=".github/images/hashio.png" width="400px" />
 </p>
 <h3 align="center">
     A simple library for hashing passwords in .NET Core
