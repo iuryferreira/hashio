@@ -1,0 +1,33 @@
+name: Deploy to Nuget.Org
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@main
+      
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'    
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+
+      - name: Create the Package
+        run: dotnet pack --configuration Release
+
+      - name: Publish to Github
+        run: dotnet nuget push "./src/Hashio/bin/Release/*.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/iuryferreira/index.json --skip-duplicate
+
+      - name: Publish to Nuget Gallery
+        run: dotnet nuget push "./src/Hashio/bin/Release/*.nupkg" -k ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+
